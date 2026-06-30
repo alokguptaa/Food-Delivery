@@ -31,7 +31,7 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://food-delivery-yucy.onrender.com"
+    "food-delivery-1dl9-jhpk6psli-alokguptaas-projects.vercel.app"
 ];
 
 
