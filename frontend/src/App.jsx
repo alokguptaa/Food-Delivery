@@ -34,7 +34,7 @@ import { addNotification } from "./redux/notificationSlice.js";
 import { updateAssignedDeliveryBoy, updateRealtimeOrderStatus } from './redux/userSlice.js';
 
 
-export const serverUrl = "https://food-delivery-2jxx.onrender.com"
+export const serverUrl = "http://localhost:3000"
 
 const App = () => {
 

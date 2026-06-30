@@ -5,7 +5,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { setMyOrders } from '../redux/userSlice.js';
 
 
-const serverUrl = "https://food-delivery-2jxx.onrender.com";
+const serverUrl = "http://localhost:3000";
 
 const useGetMyOrders = () => {
 

@@ -31,7 +31,7 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://your-frontend-url.vercel.app"
+    "http://localhost:3000"
 ];
 
 
@@ -64,5 +64,5 @@ app.get("/", (req, res) => {
 });
 
 server.listen(port, () => {
-    console.log(`🚀 Server running: https://food-delivery-2jxx.onrender.com`)
+    console.log(`🚀 Server running: http://localhost:3000`)
 })

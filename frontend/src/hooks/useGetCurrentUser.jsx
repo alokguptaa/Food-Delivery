@@ -3,7 +3,7 @@ import axios from "axios"
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../redux/userSlice';
 
-const serverUrl = "https://food-delivery-2jxx.onrender.com";
+const serverUrl = "http://localhost:3000";
 
 const useGetCurrentUser = () => {
 

@@ -23,7 +23,7 @@ const SignIn = () => {
     const [loading, setloading] = useState(false)
     const dispatch = useDispatch()
 
-    const serverUrl = "https://food-delivery-2jxx.onrender.com"
+    const serverUrl = "http://localhost:3000"
 
     const handleSignIn = async () => {
         if (!email) {
