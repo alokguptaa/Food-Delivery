@@ -4,7 +4,7 @@ import axios from "axios"
 import { useDispatch, useSelector} from 'react-redux';
 import { setMyshopdata } from '../redux/ownerSlice';
 
-const serverUrl = "http://localhost:3000";
+const serverUrl = "https://food-delivery-yucy.onrender.com";
 
 const useGetMyShop = () => {
 
