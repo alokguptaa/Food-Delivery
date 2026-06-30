@@ -5,7 +5,7 @@ import { setshopsInMyCity } from "../redux/userSlice";
 import { socket } from "../socket";
 import { EVENTS } from "../socket/events";
 
-const serverUrl = "http://localhost:3000";
+const serverUrl = "https://food-delivery-yucy.onrender.com";
 
 const useGetShopByCity = () => {
     const dispatch = useDispatch();
