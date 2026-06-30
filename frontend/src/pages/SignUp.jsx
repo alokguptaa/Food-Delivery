@@ -26,7 +26,7 @@ const SignUp = () => {
     const [loading, setloading] = useState(false)
     const dispatch = useDispatch()
 
-    const serverUrl = "http://localhost:3000"
+    const serverUrl = "https://food-delivery-2jxx.onrender.com"
 
     const handleSignUP = async () => {
         if (!fullname) {

@@ -6,7 +6,7 @@ import { socket } from '../socket.js';
 import { EVENTS } from '../socket/events.js';
 import { updateShopStatusInCity } from "../redux/userSlice";
 
-const serverUrl = "http://localhost:3000";
+const serverUrl = "https://food-delivery-2jxx.onrender.com";
 
 const useGetItemsByCity = () => {
 
