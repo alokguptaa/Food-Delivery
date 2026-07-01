@@ -36,7 +36,7 @@ const allowedOrigins = [
 
 
 app.use(cors({
-    origin:true,
+    origin:allowedOrigins,
     credentials:true
 }))
 
