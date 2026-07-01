@@ -50,7 +50,7 @@ app.use("/api/notification", notificationRouter);
 
 const io = new Server(server, {
     cors: {
-    origin:true,
+    origin:allowedOrigins,
     credentials:true,
     methods: ['POST', 'GET']
     }
