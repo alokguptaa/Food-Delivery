@@ -6,6 +6,7 @@ import { EVENTS } from "../constants/events.js";
 export const createEditShop = async (req, res) => {
     try {
         const {name, city, state, address, openingTime, closingTime} = req.body
+        console.log("===== CREATE SHOP API HIT =====");
 
         console.log("FILE:", req.file);
         console.log("BODY:", req.body);
