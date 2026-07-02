@@ -10,7 +10,9 @@ const uploadOnCloudinary = async (file) => {
 
     try {
         const result = await cloudinary.uploader.upload(file)
-        fs.unlinkSync(file)
+        if (fs.existsSync(file)) {
+            fs.unlinkSync(file);
+        }
         return result.secure_url
     } catch (error) {
         if (fs.existsSync(file)) {
