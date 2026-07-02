@@ -14,6 +14,7 @@ export const createEditShop = async (req, res) => {
         if(req.file){
             image = await uploadOnCloudinary(req.file.path)
         }
+        console.log("IMAGE AFTER CLOUDINARY:", image);
 
         let shop = await Shop.findOne({owner:req.userId})
         let isNewShop = false;
