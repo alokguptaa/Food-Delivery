@@ -47,6 +47,7 @@ export const createEditShop = async (req, res) => {
         return res.status(201).json(shop)
     } catch (error) {
         console.error("CREATE SHOP ERROR:", error);
+        console.error(error.stack);
         return res.status(500).json({message: `create shop error ${error}`})
     }
 }
