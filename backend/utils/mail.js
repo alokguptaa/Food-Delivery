@@ -14,6 +14,9 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+console.log("EMAIL:", process.env.EMAIL);
+console.log("PASS exists:", !!process.env.PASS);
+
 export const sendOtpMail = async (to, otp) => {
     await transporter.sendMail({
         from: process.env.EMAIL,
