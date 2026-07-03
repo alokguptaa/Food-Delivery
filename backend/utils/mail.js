@@ -13,6 +13,14 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+transporter.verify((error, success) => {
+    if (error) {
+        console.log("VERIFY ERROR:", error);
+    } else {
+        console.log("SMTP SERVER READY");
+    }
+});
+
 console.log("SMTP_HOST:", process.env.SMTP_HOST);
 console.log("SMTP_USER:", process.env.SMTP_USER);
 console.log("SMTP_PASS exists:", !!process.env.SMTP_PASS);
