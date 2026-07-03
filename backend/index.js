@@ -47,7 +47,10 @@ app.use(cors({
     credentials: true
 }))
 
-app.options("*", cors());
+app.options("*", cors(
+    origin: true,
+    credentials: true
+));
 
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter)
