@@ -42,18 +42,10 @@ const allowedOrigins = [
 
 
 app.use(cors({
-   origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-
-        if (
-            origin.includes("vercel.app") ||
-            origin.includes("localhost")
-        ) {
-            return callback(null, true);
-        }
-
-        return callback(null, true); // IMPORTANT (no blocking)
-    },
+   origin: [
+        "http://localhost:5173",
+        "https://food-delivery.vercel.app"
+    ],
     credentials: true
 }))
 
@@ -67,19 +59,10 @@ app.use("/api/notification", notificationRouter);
 
 const io = new Server(server, {
     cors: {
-    origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    const allowed = allowedOrigins.some((o) =>
-        origin.startsWith(o)
-    );
-
-    if (allowed) {
-        return callback(null, true);
-    } else {
-        return callback(null, false);
-    }
-}
+    origin: [
+            "http://localhost:5173",
+            "https://food-delivery.vercel.app"
+        ],
     credentials:true,
     methods: ['POST', 'GET']
     }
