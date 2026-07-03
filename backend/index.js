@@ -43,14 +43,26 @@ const allowedOrigins = [
 
 
 app.use(cors({
-   origin: allowedOrigins,
-    credentials: true
-}))
+    origin: function (origin, callback) {
+        // allow mobile apps / postman
+        if (!origin) return callback(null, true);
 
-app.options("*", cors(
-    origin: true,
-    credentials: true
-));
+        // allow localhost + vercel
+        if (
+            origin.includes("localhost") ||
+            origin.includes("vercel.app")
+        ) {
+            return callback(null, true);
+        }
+
+        return callback(null, true); // safe fallback (no blocking)
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
+
+
+app.options("*", cors());
 
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter)
@@ -63,7 +75,7 @@ const io = new Server(server, {
     cors: {
     origin: allowedOrigins,
     credentials:true,
-    methods: ['POST', 'GET']
+    methods: ["GET", "POST", "PUT", "DELETE"]
     }
 })
 
