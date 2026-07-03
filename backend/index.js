@@ -28,13 +28,6 @@ connectDb();
 app.use(express.json())
 app.use(cookieParser())
 
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.originalUrl}`);
-    next();
-});
-
-app.set("trust proxy", 1);
-
 const allowedOrigins = [
     "http://localhost:5173",
     "https://food-delivery.vercel.app",
@@ -43,22 +36,8 @@ const allowedOrigins = [
 
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // allow mobile apps / postman
-        if (!origin) return callback(null, true);
-
-        // allow localhost + vercel
-        if (
-            origin.includes("localhost") ||
-            origin.includes("vercel.app")
-        ) {
-            return callback(null, true);
-        }
-
-        return callback(null, true); // safe fallback (no blocking)
-    },
+    origin:true,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 
 
@@ -73,9 +52,9 @@ app.use("/api/notification", notificationRouter);
 
 const io = new Server(server, {
     cors: {
-    origin: allowedOrigins,
+    origin: true,
     credentials:true,
-    methods: ["GET", "POST", "PUT", "DELETE"]
+    methods: ["GET", "POST"]
     }
 })
 
