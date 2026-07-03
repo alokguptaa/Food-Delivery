@@ -27,6 +27,11 @@ connectDb();
 
 app.use(express.json())
 app.use(cookieParser())
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl}`);
+    next();
+});
+
 app.set("trust proxy", 1);
 
 const allowedOrigins = [
