@@ -41,8 +41,16 @@ const allowedOrigins = [
 
 
 app.use(cors({
-    origin:allowedOrigins,
-    credentials:true
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
 }))
 
 
@@ -55,7 +63,15 @@ app.use("/api/notification", notificationRouter);
 
 const io = new Server(server, {
     cors: {
-    origin:allowedOrigins,
+    origin: function (origin, callback) {
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            } else {
+                return callback(new Error("Not allowed by CORS"));
+            }
+        },
     credentials:true,
     methods: ['POST', 'GET']
     }
