@@ -650,6 +650,9 @@ export const getOrderById = async (req, res) => {
 }
 
 export const sendDeliveryOtp = async (req, res) => {
+    console.log("OTP API HIT");
+    console.log("BODY:", req.body);
+    console.log("USER:", req.userId);
     try {
         const {orderId, shopOrderId} = req.body
 
@@ -673,6 +676,7 @@ export const sendDeliveryOtp = async (req, res) => {
             return res.status(200).json({message: `Otp sent Successfully to ${order?.user?.fullname}`})
 
         } catch (error) {
+            console.error("OTP ERROR:", error);
             return res.status(500).json({message: `delivery otp error ${error}`})
         }
     }
