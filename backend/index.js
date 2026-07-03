@@ -36,7 +36,8 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://food-delivery-1dl9-git-main-alokguptaas-projects.vercel.app"
+    "https://food-delivery-1dl9-git-main-alokguptaas-projects.vercel.app",
+    "https://food-delivery.vercel.app"
 ];
 
 
