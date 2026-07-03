@@ -41,8 +41,6 @@ app.use(cors({
 }));
 
 
-app.options("*", cors());
-
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter)
 app.use("/api/shop", shopRouter)
