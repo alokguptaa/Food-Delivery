@@ -10,6 +10,9 @@ export const createEditShop = async (req, res) => {
 
         console.log("FILE:", req.file);
         console.log("BODY:", req.body);
+        console.log("REQ.FILE =", req.file);
+        console.log("REQ.FILE.PATH =", req.file?.path);
+        console.log("REQ.FILE.FILENAME =", req.file?.filename);
 
         let image;
         if(req.file){
