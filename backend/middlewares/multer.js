@@ -4,7 +4,6 @@ import fs from "fs";
 
 const uploadDir = path.join(process.cwd(), "public");
 
-// Folder exist na ho to create karo
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
     console.log("Created upload directory:", uploadDir);
@@ -12,13 +11,17 @@ if (!fs.existsSync(uploadDir)) {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log("DESTINATION:", uploadDir);
         cb(null, uploadDir);
     },
 
     filename: (req, file, cb) => {
         console.log("FILENAME:", file.originalname);
         cb(null, Date.now() + "-" + file.originalname);
+        cb(null, path.join(process.cwd(), "public"))
+    },
+
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "-" + file.originalname)
     }
 });
 

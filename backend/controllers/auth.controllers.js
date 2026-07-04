@@ -157,6 +157,8 @@ export const sendOtp = async (req, res) => {
         await sendOtpMail(email, otp)
         return res.status(200).json({message:"otp sent successfully"})
     } catch (error) {
+        console.error(error.stack);
+        console.error("SEND OTP ERROR:", error);
         return res.status(500).json(`send otp error ${error}`)
     }
 }
@@ -207,8 +209,8 @@ export const googleAuth = async (req, res) => {
 
         const token = await gentoken(user._id)
         res.cookie("token",token,{
-            secure:false,
-            sameSite:"strict",
+            secure:true,
+            sameSite:"none",
             maxAge:7*24*60*60*1000,
             httpOnly:true
         })
