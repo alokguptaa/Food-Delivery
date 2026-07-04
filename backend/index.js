@@ -64,5 +64,5 @@ app.get("/", (req, res) => {
 });
 
 server.listen(port, () => {
-    console.log(`🚀 Server running: http://localhost:3000`)
+    console.log(`🚀 Server running: https://food-delivery-yucy.onrender.com`)
 })
