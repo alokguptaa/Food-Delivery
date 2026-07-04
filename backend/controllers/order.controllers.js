@@ -655,23 +655,28 @@ export const sendDeliveryOtp = async (req, res) => {
     console.log("USER:", req.userId);
     try {
         const {orderId, shopOrderId} = req.body
-
+         console.log("1");
         const order = await Order.findById(orderId).populate("user")
+        console.log("2");
         if(!order){
             return res.status(400).json({message: "enter valid order/shoporderid"})
         }
 
         const shopOrder = order.shopOrders.id(shopOrderId)
+        console.log("3");
         if (!shopOrder) {
             return res.status(400).json({ message: "Shop order not found" });
         }
 
 
         const otp = Math.floor(1000 + Math.random() * 9000).toString()
+        console.log("4");
             shopOrder.delieveryOtp = otp;
             shopOrder.otpExpires = Date.now() + 5 * 60 * 1000
             await order.save()
+        console.log("5");
             await sendDeliveryOtpMail(order.user, otp)
+        console.log("6");
 
             return res.status(200).json({message: `Otp sent Successfully to ${order?.user?.fullname}`})
 
