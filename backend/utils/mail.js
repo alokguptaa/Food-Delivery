@@ -28,6 +28,8 @@ const sendMail = async (to, subject, html) => {
             }
         );
 
+        console.log("Response:", response.status);
+        console.log("Response Data:", response.data);
         console.log("BREVO SUCCESS:", response.data);
     } catch (error) {
         console.error(
