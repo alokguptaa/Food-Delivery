@@ -30,7 +30,7 @@ app.use(cookieParser())
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "food-delivery-u5mk.vercel.app",
+    "https://food-delivery-u5mk.vercel.app",
     "https://food-delivery-1dl9-git-main-alokguptaas-projects.vercel.app"
 ];
 
