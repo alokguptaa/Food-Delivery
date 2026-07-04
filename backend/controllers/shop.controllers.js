@@ -18,6 +18,7 @@ export const createEditShop = async (req, res) => {
             shop = await Shop.create({
             name, city, state, address, image, owner:req.userId, openingTime, closingTime
         })
+        isNewShop = true
         }else {
             const updateData = {
                 name, city, state, address, owner: req.userId, openingTime, closingTime
@@ -45,6 +46,7 @@ export const createEditShop = async (req, res) => {
 
         return res.status(201).json(shop)
     } catch (error) {
+        console.error("CREATE SHOP ERROR:", error);
         return res.status(500).json({message: `create shop error ${error}`})
     }
 }

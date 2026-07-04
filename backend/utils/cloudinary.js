@@ -9,12 +9,22 @@ const uploadOnCloudinary = async (file) => {
     });
 
     try {
+        console.log("FILE PATH:", file);
+console.log("FILE EXISTS:", fs.existsSync(file));
         const result = await cloudinary.uploader.upload(file)
-        fs.unlinkSync(file)
+console.log("UPLOAD SUCCESS:", result.secure_url);
+        if (fs.existsSync(file)) {
+            fs.unlinkSync(file);
+        }
         return result.secure_url
     } catch (error) {
-        fs.unlinkSync(file)
-        console.log(error)
+        console.error("CLOUDINARY ERROR:", error);
+        if (fs.existsSync(file)) {
+            fs.unlinkSync(file);
+        }
+
+        console.error("Cloudinary Error:", error);
+        throw error; 
     }
 }
 
