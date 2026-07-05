@@ -5,8 +5,6 @@ dotenv.config();
 
 const sendMail = async (to, subject, html) => {
     try {
-        console.log("Sender:", process.env.SENDER_EMAIL);
-        console.log("API Key:", process.env.BREVO_API_KEY.slice(0, 12));
         const response = await axios.post(
             "https://api.brevo.com/v3/smtp/email",
             {
@@ -29,10 +27,6 @@ const sendMail = async (to, subject, html) => {
                 },
             }
         );
-
-        console.log("Response:", response.status);
-        console.log("Response Data:", response.data);
-        console.log("BREVO SUCCESS:", response.data);
     } catch (error) {
         console.error(
             "BREVO ERROR:",
