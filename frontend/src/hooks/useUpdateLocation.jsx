@@ -9,6 +9,11 @@ const useUpdateLocation = () => {
     useEffect(() => {
         if (!userData) return;
 
+        if (!("geolocation" in navigator)) {
+           console.log("Geolocation not supported");
+           return;
+       }
+
         const updateLocation = async (lat, lon) => {
             try {
                 const result = await axios.post(
@@ -30,8 +35,13 @@ const useUpdateLocation = () => {
                 );
             },
             (err) => {
-                console.log("Geolocation Error:", err);
-            }
+                console.log("Geolocation Error:", err.message);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0,
+           }
         );
         return () => {
             navigator.geolocation.clearWatch(watchId);
