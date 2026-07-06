@@ -33,13 +33,12 @@ const UserDashboard = () => {
 
     const handleFilterByCategory = (categories) => {
 
+    if (categories === "All") {
+        setupdatedItemsList(itemsInMyCity);
+        return;
+    }
+
     const filteredList = itemsInMyCity.filter(item => {
-        console.log(
-            "Comparing:",
-            `"${item.category}"`,
-            "===",
-            `"${categories}"`
-        );
 
         return item.category === categories;
     });
@@ -52,7 +51,6 @@ const UserDashboard = () => {
         if(element){
             setLeftCateButton(element.scrollLeft > 0)
             
-
             setRightCateButton(
                 Math.ceil(element.scrollLeft + element.clientWidth) < element.scrollWidth
             )
@@ -82,15 +80,12 @@ const UserDashboard = () => {
         updateButton(shopScrollRef, setLeftShopButton, setRightShopButton);
     };
 
-    // add listeners
     cateEl.addEventListener("scroll", handleCateScroll);
     shopEl.addEventListener("scroll", handleShopScroll);
 
-    // initial call (optional but good)
     updateButton(cateScrollRef, setLeftCateButton, setRightCateButton);
     updateButton(shopScrollRef, setLeftShopButton, setRightShopButton);
 
-    // cleanup
     return () => {
         cateEl.removeEventListener("scroll", handleCateScroll);
         shopEl.removeEventListener("scroll", handleShopScroll);
