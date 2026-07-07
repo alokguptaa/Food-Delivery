@@ -129,12 +129,12 @@ export const signOut =async (req, res) => {
             });
         }
         
-        res.clearCookie("token");
-        return res.status(200).json({
-            message: "log out successfully"
+        res.clearCookie("token",{
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/",
         });
-
-        res.clearCookie("token");
 
         return res.status(200).json({message:"log out successfully"})
     } catch (error) {
