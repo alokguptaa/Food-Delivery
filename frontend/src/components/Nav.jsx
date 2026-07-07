@@ -41,6 +41,7 @@ const Nav = () => {
                 socket.disconnect(); 
             dispatch(setUserData(null)
             )
+            navigate("/signin", { replace: true });
         } catch (error) {
             console.log(error)
         }
