@@ -31,12 +31,13 @@ app.use(cookieParser())
 const allowedOrigins = [
     "http://localhost:5173",
     "https://food-delivery-u5mk.vercel.app",
-    "https://food-delivery-1dl9-git-main-alokguptaas-projects.vercel.app"
+    "https://food-delivery-1dl9-git-main-alokguptaas-projects.vercel.app",
+    "food-delivery-1dl9.vercel.app"
 ];
 
 
 app.use(cors({
-    origin:true,
+    origin:allowedOrigins,
     credentials: true,
 }));
 
@@ -50,7 +51,7 @@ app.use("/api/notification", notificationRouter);
 
 const io = new Server(server, {
     cors: {
-    origin: true,
+    origin: allowedOrigins,
     credentials:true,
     methods: ["GET", "POST"]
     }
